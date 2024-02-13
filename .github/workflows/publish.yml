@@ -1,0 +1,34 @@
+name: Publish Plasmo Extension
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run package
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/chrome-mv3-prod.zip
+          tag_name: $｛｛ github.run_number ｝｝
+          release_name: Release $｛｛ github.run_number ｝｝
+          body: |
+            This is the release of Plasmo extension $｛｛ github.run_number ｝｝
