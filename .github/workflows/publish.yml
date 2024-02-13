@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Build extension
-        run: npm run package
+        run: npm run build && npm run package
 
       - name: Publish release
         uses: softprops/action-gh-release@v1
