@@ -29,6 +29,5 @@ jobs:
         with:
           files: build/chrome-mv3-prod.zip
           tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}.zip
           body: |
             This is the release of Plasmo extension ${{ github.run_number }}.zip
