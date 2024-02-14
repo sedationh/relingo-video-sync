@@ -1,5 +1,8 @@
 name: Publish Plasmo Extension
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
