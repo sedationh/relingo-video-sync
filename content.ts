@@ -4,7 +4,7 @@ export const config: PlasmoCSConfig = {
   matches: ["https://www.youtube.com/*"]
 }
 
-// 监听键盘事件
+// 处理文案同步
 document.addEventListener("keydown", (e) => {
   if (e.key !== "x" && e.key !== "X") {
     return
@@ -15,4 +15,26 @@ document.addEventListener("keydown", (e) => {
   if (rlBackToTopElem) {
     rlBackToTopElem.click()
   }
+})
+
+// 处理回答按钮
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "x" && e.key !== "X") {
+    return
+  }
+
+  const hostELem = document.querySelector("#chatgpt-for-google-container")
+  const shadowRoot = hostELem?.shadowRoot as any
+
+  const buttons = shadowRoot.querySelectorAll("button")
+
+  let targetButton = null
+  for (let i = 0; i < buttons.length; i++) {
+    if (buttons[i].textContent === "Ask ChatGPT to Summarize") {
+      targetButton = buttons[i]
+      break
+    }
+  }
+
+  targetButton?.click()
 })
