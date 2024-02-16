@@ -1,18 +1,18 @@
 import type { PlasmoCSConfig } from "plasmo"
- 
+
 export const config: PlasmoCSConfig = {
-  matches: ["https://www.youtube.com/*"],
+  matches: ["https://www.youtube.com/*"]
 }
 
-// 监听键盘事件 s
+// 监听键盘事件
 document.addEventListener("keydown", (e) => {
-    if (e.key !== "x") { 
-        return
-    }
-    
-    const rlBackToTopElem = document.querySelector(".rl-backtotop") as HTMLElement
+  if (e.key !== "x" && e.key !== "X") {
+    return
+  }
 
-    if (rlBackToTopElem) {
-        rlBackToTopElem.click()
-    }
+  const rlBackToTopElem = document.querySelector(".rl-backtotop") as HTMLElement
+
+  if (rlBackToTopElem) {
+    rlBackToTopElem.click()
+  }
 })
