@@ -4,8 +4,14 @@ export const config: PlasmoCSConfig = {
   matches: ["https://www.youtube.com/*"]
 }
 
+const addKeyXListener = (callback) => {
+  document.addEventListener("keydown", (e) => {
+    callback(e)
+  })
+}
+
 // 处理文案同步
-document.addEventListener("keydown", (e) => {
+addKeyXListener((e) => {
   if (e.key !== "x" && e.key !== "X") {
     return
   }
@@ -18,7 +24,7 @@ document.addEventListener("keydown", (e) => {
 })
 
 // 处理回答按钮
-document.addEventListener("keydown", (e) => {
+addKeyXListener((e) => {
   if (e.key !== "x" && e.key !== "X") {
     return
   }
@@ -37,4 +43,25 @@ document.addEventListener("keydown", (e) => {
   }
 
   targetButton?.click()
+})
+
+// 如果点了按钮，再给显示
+addKeyXListener((e) => {
+  if (e.key !== "x" && e.key !== "X") {
+    return
+  }
+
+  const llnBottomPanel = document.querySelector(
+    ".lln-bottom-panel"
+  ) as HTMLElement
+
+  if (!llnBottomPanel) {
+    return
+  }
+
+  if (llnBottomPanel.style.display === "block") {
+    llnBottomPanel.style.display = "none"
+    return
+  }
+  llnBottomPanel.style.display = "block"
 })
