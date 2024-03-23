@@ -65,3 +65,37 @@ addKeyXListener((e) => {
   }
   llnBottomPanel.style.display = "block"
 })
+
+const style = document.createElement("style")
+document.head.appendChild(style)
+let lastWidth = 0
+
+setInterval(() => {
+  const width =
+    document.querySelector("#player-container-inner").clientWidth ||
+    document.querySelector("#movie_player").clientWidth
+
+  if (lastWidth === width) {
+    return
+  }
+
+  lastWidth = width
+
+  style.innerHTML = `
+  .lln-bottom-panel {
+    position: fixed !important;
+    bottom: 0 !important;
+    background: #fff;
+    padding: 10px 0 !important;
+    width: ${width}px !important;
+  }
+
+  ytd-watch-flexy[full-bleed-player] #full-bleed-container.ytd-watch-flexy {
+    z-index: 1;
+  }
+
+  #player.ytd-watch-flexy {
+    z-index: 1;
+  }
+`
+}, 2000)
