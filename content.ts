@@ -68,7 +68,9 @@ setInterval(() => {
   const distanceFromBottom = 20
   const topValue = playerBottomPosition + distanceFromBottom
 
-  if (lastWidth === width) {
+  const contents = document.querySelector("#below")
+
+  if (lastWidth === width && contents) {
     return
   }
 
@@ -90,6 +92,11 @@ setInterval(() => {
 
     #player.ytd-watch-flexy {
       z-index: 1;
+    }
+
+
+    #below {
+      top: ${100}px !important;
     }
   `
 }, 2000)
