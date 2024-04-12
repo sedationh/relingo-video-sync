@@ -96,7 +96,7 @@ setInterval(() => {
 
 
     #below {
-      top: ${100}px !important;
+      top: ${200}px !important;
     }
   `
 }, 2000)
